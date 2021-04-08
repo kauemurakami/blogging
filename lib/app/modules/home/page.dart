@@ -14,15 +14,21 @@ class HomePage extends GetView<HomeController> {
       child: this.controller.obx(
             (state) => Column(
               children: [
-                Expanded(
-                    flex: 1,
-                    child: Padding(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         title_home,
                         style: title_style,
                       ),
-                    )),
+                    ),
+                    Switch.adaptive(
+                        value: this.controller.appConfigService.getTheme(),
+                        onChanged: (b) => this.controller.changeTheme(b)),
+                  ],
+                ),
                 Expanded(
                   flex: 9,
                   child: ListView.builder(
