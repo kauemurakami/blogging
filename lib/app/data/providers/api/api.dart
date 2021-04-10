@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/data/models/error.dart';
 import 'package:teste_eprhom/app/data/models/posts.dart';
@@ -11,6 +9,7 @@ class EprhomProvider extends GetConnect {
     Rx<Posts> posts;
     final response = await get<Rx<Posts>>(baseUrl, decoder: (res) {
       posts = Posts.fromJson(res).obs;
+      print(posts.value.result.length.toString());
       return posts;
     });
     if (response.hasError) {

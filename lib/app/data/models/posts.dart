@@ -28,20 +28,22 @@ class Posts {
 }
 
 class Result {
-  Result({
-    this.id,
-    this.codigo,
-    this.respostas,
-    this.dataHora,
-    this.estaLido,
-    this.autorId,
-    this.autorNome,
-    this.autorImageUrl,
-    this.texto,
-    this.versao,
-  });
+  Result(
+      {this.id,
+      this.codigo,
+      this.respostas,
+      this.dataHora,
+      this.estaLido,
+      this.autorId,
+      this.autorNome,
+      this.autorImageUrl,
+      this.texto,
+      this.versao,
+      this.abrirRespostas,
+      this.liked});
 
   String id;
+  bool liked;
   String codigo;
   int respostas;
   String dataHora;
@@ -49,6 +51,7 @@ class Result {
   String autorId;
   String autorNome;
   String autorImageUrl;
+  bool abrirRespostas;
   String texto;
   int versao;
 
@@ -59,6 +62,8 @@ class Result {
         dataHora: json["DataHora"],
         estaLido: json["EstaLido"],
         autorId: json["AutorID"],
+        liked: false,
+        abrirRespostas: false,
         autorNome: json["AutorNome"],
         autorImageUrl: json["AutorImageUrl"],
         texto: json["Texto"],

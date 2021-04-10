@@ -7,11 +7,11 @@ class AppConfigService extends GetxService {
   Future<AppConfigService> init() async {
     box = GetStorage();
     await box.writeIfNull(THEME, false);
+    Get.changeTheme(box.read(THEME) ? ThemeData.dark() : ThemeData.light());
     return this;
   }
 
   GetStorage box;
-  RxBool themeIsDark;
   bool getTheme() => this.box.read(THEME);
   changeTheme(b) async {
     Get.changeTheme(b ? ThemeData.dark() : ThemeData.light());

@@ -1,3 +1,14 @@
 const title_home = 'Blog Eprhom';
 const editar = 'Editar';
 const excluir = 'Excluir';
+const create_publish = 'Criar publicação';
+const hint_add_post = 'Compartilhe suas ideias com a Eprhom!';
+const publish = 'Publicar';
+const lido = 'Lido';
+const nlido = 'Ler';
+const answers = 'Respostas';
+const like = 'Curtir';
+const deslike = 'Descurtir';
+const ops = 'Ops';
+const not_answers = 'Ainda não existem respostas para essa publicação.';
+const friends = 'Membros';
