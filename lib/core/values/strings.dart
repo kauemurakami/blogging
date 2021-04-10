@@ -12,3 +12,4 @@ const deslike = 'Descurtir';
 const ops = 'Ops';
 const not_answers = 'Ainda não existem respostas para essa publicação.';
 const friends = 'Membros';
+const profile = 'Perfil';

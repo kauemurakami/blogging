@@ -9,7 +9,6 @@ class EprhomProvider extends GetConnect {
     Rx<Posts> posts;
     final response = await get<Rx<Posts>>(baseUrl, decoder: (res) {
       posts = Posts.fromJson(res).obs;
-      print(posts.value.result.length.toString());
       return posts;
     });
     if (response.hasError) {

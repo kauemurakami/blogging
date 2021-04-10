@@ -2,16 +2,19 @@ import 'package:get/get.dart';
 import 'package:teste_eprhom/app/data/models/posts.dart';
 import 'package:teste_eprhom/app/data/providers/api/api.dart';
 import 'package:teste_eprhom/app/data/services/app_config_service/service.dart';
+import 'package:teste_eprhom/app/data/services/auth_service/service.dart';
 import 'package:teste_eprhom/app/modules/posts/repository.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 
 class PostsController extends GetxController with StateMixin<Rx<Posts>> {
   final PostsRepository repository = PostsRepository(EprhomProvider());
   AppConfigService appConfigService;
+  AuthService authService;
   final expanded = false.obs;
   @override
   void onInit() {
     this.appConfigService = Get.find<AppConfigService>();
+    this.authService = Get.find<AuthService>();
     this.repository.getAllPosts().then((resp) {
       change(resp, status: RxStatus.success());
     }, onError: (err) {
