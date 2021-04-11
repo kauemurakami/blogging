@@ -51,4 +51,5 @@ dev_dependencies:
 ## Fast APK
 - [APK](https://github.com/kauemurakami/blogging/blob/main/apk_release.apk)
 
-## 
+## Design Pattern 
+- [GetX Pattern](https://github.com/kauemurakami/getx_pattern)
