@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/skills.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/image_avatar.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/title.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/age.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/buttons.dart';
 import 'package:teste_eprhom/core/theme/text_theme.dart';
-import 'package:teste_eprhom/core/values/strings.dart';
 import 'controller.dart';
 
 class ProfilePage extends GetView {
@@ -19,32 +23,13 @@ class ProfilePage extends GetView {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      profile,
-                      style: title_style,
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 16.0, bottom: 16.0),
-                height: 150.0,
-                width: 150.0,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/avatar.png'),
-                        fit: BoxFit.cover)),
-              ),
-              Text(
-                this.controller.authService.user.value.autorNome,
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
-              ),
+              TitleProfileWidget(),
+              ImageAvatarWidget(),
+              Text(this.controller.authService.user.value.autorNome,
+                  style: profile_text),
+              AgeWidget(),
+              SkillsWidget(),
+              ButtonsProfileWidget()
             ],
           ),
         ),
