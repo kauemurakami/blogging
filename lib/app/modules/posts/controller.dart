@@ -29,8 +29,11 @@ class PostsController extends GetxController with StateMixin<Rx<Posts>> {
   }
 
   updatePosts(u) {
-    this.state.value.result.insert(0, u);
-    change(state, status: RxStatus.success());
+    this.newPosts.insert(0, u);
+    if (this.newPosts.last.value.texto.length <= 280) {
+      this.state.value.result.insert(0, this.newPosts.last);
+      change(state, status: RxStatus.success());
+    }
   }
 
   like(i) {
