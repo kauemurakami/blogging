@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/modules/friends/controller.dart';
-import 'package:teste_eprhom/core/theme/text_theme.dart';
 
 class CardFriendWidget extends Container {
   final index;

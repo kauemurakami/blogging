@@ -29,6 +29,7 @@ dependencies:
   lite_rolling_switch:
   flutter_spinkit:
   get_storage:
+  top_snackbar_flutter:
   glassmorphism: ^1.0.6
 
   # The following adds the Cupertino Icons font to your application.

@@ -4,6 +4,7 @@ import 'package:teste_eprhom/app/modules/friends/controller.dart';
 import 'package:teste_eprhom/app/modules/friends/widgets/card_friend.dart';
 import 'package:teste_eprhom/app/widgets/loading.dart';
 import 'package:teste_eprhom/core/theme/text_theme.dart';
+import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 
 class FriendsPage extends GetView {
@@ -25,11 +26,15 @@ class FriendsPage extends GetView {
                 ),
                 Expanded(
                     flex: 9,
-                    child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                        itemCount: state.value.result.length,
-                        itemBuilder: (_, index) => CardFriendWidget(index)))
+                    child: Theme(
+                      data: Theme.of(context).copyWith(accentColor: mainColor),
+                      child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemCount: state.value.result.length,
+                          itemBuilder: (_, index) => CardFriendWidget(index)),
+                    ))
               ]),
               onLoading: LoadingWidget(),
               onError: (error) => Center(child: Text(error)),

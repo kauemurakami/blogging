@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/modules/home/controller.dart';
-import 'package:teste_eprhom/app/modules/home/widgets/publish_button.dart';
 import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddPostForm extends Container {
-  static final GlobalKey _formKey = GlobalKey<FormState>();
+  final GlobalKey _formKey = GlobalKey<FormState>();
   final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class AddPostForm extends Container {
                       keyboardType: TextInputType.multiline,
                       maxLines: 10,
                       cursorColor: Colors.white,
-                      maxLength: 280,
+                      maxLength: 380,
                       style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                           counterStyle: TextStyle(color: Colors.white),
@@ -48,7 +49,41 @@ class AddPostForm extends Container {
                           labelStyle: TextStyle(color: Colors.white))),
                 ),
               ),
-              PublishButton()
+              Container(
+                width: 160.0,
+                padding: const EdgeInsets.all(8.0),
+                child: OutlineButton(
+                    hoverColor: mainColor,
+                    splashColor: mainColor,
+                    highlightedBorderColor: mainColor,
+                    highlightColor: mainColor,
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      final FormState form = this._formKey.currentState;
+                      if (form.validate()) {
+                        this.controller.addPost();
+                      } else {
+                        showTopSnackBar(
+                            Get.overlayContext,
+                            CustomSnackBar.error(
+                              icon: Icon(
+                                Icons.error_outline,
+                                color: mainColor,
+                                size: 120.0,
+                              ),
+                              backgroundColor: Colors.transparent,
+                              iconRotationAngle: 32,
+                              message: min_caracteres,
+                            ));
+                      }
+                    },
+                    child: Text(
+                      publish,
+                      style: TextStyle(color: Colors.white),
+                    )),
+              )
             ],
           ),
         ),

@@ -17,13 +17,22 @@ class HeaderCardWidget extends Container {
             width: 100.0,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(this
-                      .controller
-                      .state
-                      .value
-                      .result[index]
-                      .value
-                      .autorImageUrl),
+                  image: this
+                              .controller
+                              .state
+                              .value
+                              .result[this.index]
+                              .value
+                              .autorImageUrl ==
+                          null
+                      ? AssetImage('assets/images/avatar.png')
+                      : NetworkImage(this
+                          .controller
+                          .state
+                          .value
+                          .result[this.index]
+                          .value
+                          .autorImageUrl),
                 ),
                 shape: BoxShape.circle),
           ),

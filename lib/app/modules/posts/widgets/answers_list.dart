@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/modules/posts/controller.dart';
 import 'package:teste_eprhom/app/modules/posts/widgets/answers_card.dart';
+import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 
 class AnswersListWidget extends Container {
@@ -31,15 +32,18 @@ class AnswersListWidget extends Container {
                       child: Text(answers))),
               Expanded(
                 flex: 8,
-                child: ListView.builder(
-                    itemCount: this
-                        .controller
-                        .state
-                        .value
-                        .result[this.index]
-                        .value
-                        .respostas,
-                    itemBuilder: (_, index) => AnswerCardWidget()),
+                child: Theme(
+                  data: Theme.of(context).copyWith(accentColor: mainColor),
+                  child: ListView.builder(
+                      itemCount: this
+                          .controller
+                          .state
+                          .value
+                          .result[this.index]
+                          .value
+                          .respostas,
+                      itemBuilder: (_, index) => AnswerCardWidget()),
+                ),
               ),
             ],
           ),
