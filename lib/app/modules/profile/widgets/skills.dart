@@ -6,9 +6,8 @@ class SkillsWidget extends Container {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.only(top: 8.0, bottom: 16.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Skills',
               style: TextStyle(

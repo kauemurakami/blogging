@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/data/models/posts.dart';
 import 'package:teste_eprhom/app/data/providers/api/api.dart';
@@ -11,6 +12,8 @@ import 'package:teste_eprhom/app/modules/posts/widgets/minumun_caracteres.dart';
 import 'package:teste_eprhom/app/modules/posts/widgets/add_post_succes_notify.dart';
 import 'package:teste_eprhom/app/modules/posts/widgets/notify_delete_post.dart';
 import 'package:teste_eprhom/app/modules/posts/widgets/notify_edit_post.dart';
+import 'package:teste_eprhom/core/utils/connectivity.dart';
+import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -22,19 +25,43 @@ class PostsController extends GetxController with StateMixin<Rx<Posts>> {
 
   TextEditingController txtController = TextEditingController(text: '');
   @override
-  void onInit() {
-    this.authService = Get.find<AuthService>();
-
-    this.appConfigService = Get.find<AppConfigService>();
-    this.repository.getAllPosts().then((resp) {
-      change(resp, status: RxStatus.success());
-    }, onError: (err) {
-      change(
-        null,
-        status: RxStatus.error('Error get data'),
-      );
+  void onInit() async {
+    var b = await VerifyInternet.verify();
+    if (b) {
+      this.authService = Get.find<AuthService>();
+      this.appConfigService = Get.find<AppConfigService>();
+      this.repository.getAllPosts().then((resp) {
+        change(resp, status: RxStatus.success());
+      }, onError: (err) {
+        change(
+          null,
+          status: RxStatus.error('Erro ao recuperar Publicaçãõs'),
+        );
+        super.onInit();
+      });
+    } else {
+      Get.dialog(AlertDialog(
+        actions: [
+          OutlineButton(
+            onPressed: () => SystemNavigator.pop(),
+            borderSide: BorderSide(color: heartColor),
+            child: Text(
+              exit_app,
+              style: TextStyle(color: mainColor),
+            ),
+          ),
+        ],
+        title: Text(not_connected),
+        content: Container(
+          height: 180.0,
+          width: 180.0,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/not_connected.png'))),
+        ),
+      ));
       super.onInit();
-    });
+    }
   }
 
   getPostDate(String d) {
@@ -92,9 +119,15 @@ class PostsController extends GetxController with StateMixin<Rx<Posts>> {
 
   editPost(i) {
     this.state.value.result[i].value.texto = this.txtController.text;
-    change(this.state, status: RxStatus.success());
-    showTopSnackBar(Get.overlayContext, EditPostNotifyWidget());
-    Get.back();
+    if (this.state.value.result[i].value.texto == null ||
+        this.state.value.result[i].value.texto == '' ||
+        this.state.value.result[i].value.texto.length < 7) {
+      showTopSnackBar(Get.overlayContext, MinumunCaracteresPushWidget());
+    } else {
+      change(this.state, status: RxStatus.success());
+      showTopSnackBar(Get.overlayContext, EditPostNotifyWidget());
+      Get.back();
+    }
   }
 
   openEditPost(i) {

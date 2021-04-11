@@ -5,6 +5,7 @@ import 'package:teste_eprhom/app/modules/profile/widgets/image_avatar.dart';
 import 'package:teste_eprhom/app/modules/profile/widgets/title.dart';
 import 'package:teste_eprhom/app/modules/profile/widgets/age.dart';
 import 'package:teste_eprhom/app/modules/profile/widgets/buttons.dart';
+import 'package:teste_eprhom/app/modules/profile/widgets/phone.dart';
 import 'package:teste_eprhom/core/theme/text_theme.dart';
 import 'controller.dart';
 
@@ -28,6 +29,7 @@ class ProfilePage extends GetView {
               Text(this.controller.authService.user.value.autorNome,
                   style: profile_text),
               AgeWidget(),
+              PhoneWidget(),
               SkillsWidget(),
               ButtonsProfileWidget()
             ],

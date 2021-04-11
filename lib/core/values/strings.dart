@@ -25,5 +25,12 @@ const lates = 'Curriculo Lattes';
 const git = 'GitHub';
 const age_string = 'Idade ';
 const age_value = '26';
+const phone = '34984069347';
+const not_connected =
+    'Você não possui conexão com a internet, tente novamente assim que estabelecer uma conexão!';
 const open_source_project = 'Projeto Open-source publicado';
+const more_information = 'Páginas com mais informações';
+const exit_app = 'Sair do App';
+const reload = 'Tentar novamente';
+
 const ID = 'fnweion-231940u23-fwfew';

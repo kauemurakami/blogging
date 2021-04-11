@@ -32,6 +32,7 @@ dependencies:
   top_snackbar_flutter:
   glassmorphism: ^1.0.6
   webview_flutter:
+  url_launcher: ^5.7.10
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -56,6 +57,7 @@ flutter:
   assets:
     - assets/images/splash.png
     - assets/images/avatar.png
+    - assets/images/not_connected.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
