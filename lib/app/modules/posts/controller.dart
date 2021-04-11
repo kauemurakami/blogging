@@ -3,12 +3,11 @@ import 'package:teste_eprhom/app/data/models/posts.dart';
 import 'package:teste_eprhom/app/data/providers/api/api.dart';
 import 'package:teste_eprhom/app/data/services/app_config_service/service.dart';
 import 'package:teste_eprhom/app/modules/posts/repository.dart';
-import 'package:teste_eprhom/app/modules/posts/widgets/push_not_answers.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PostsController extends GetxController with StateMixin<Rx<Posts>> {
   final PostsRepository repository = PostsRepository(EprhomProvider());
   AppConfigService appConfigService;
+  final newPosts = <Rx<Result>>[].obs;
   final expanded = false.obs;
   @override
   void onInit() {
@@ -29,7 +28,8 @@ class PostsController extends GetxController with StateMixin<Rx<Posts>> {
     return date;
   }
 
-  updatePosts() {
+  updatePosts(u) {
+    this.state.value.result.insert(0, u);
     change(state, status: RxStatus.success());
   }
 
@@ -40,10 +40,8 @@ class PostsController extends GetxController with StateMixin<Rx<Posts>> {
   }
 
   exapandAnswers(i) {
-    this.state.value.result[i].value.respostas <= 0
-        ? showTopSnackBar(Get.overlayContext, NotAnswersPushWidget())
-        : this.state.value.result[i].value.abrirRespostas =
-            !this.state.value.result[i].value.abrirRespostas;
+    this.state.value.result[i].value.abrirRespostas =
+        !this.state.value.result[i].value.abrirRespostas;
     change(this.state, status: RxStatus.success());
   }
 

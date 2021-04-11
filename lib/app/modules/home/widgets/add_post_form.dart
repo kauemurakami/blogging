@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:teste_eprhom/app/modules/home/controller.dart';
 import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddPostForm extends Container {
   final GlobalKey _formKey = GlobalKey<FormState>();
@@ -29,6 +27,7 @@ class AddPostForm extends Container {
                     accentColor: mainColor,
                   ),
                   child: TextFormField(
+                      textInputAction: TextInputAction.done,
                       onChanged: (v) => this.controller.onChangedPost(v),
                       onSaved: (v) => this.controller.onSavedPost(v),
                       validator: (v) => this.controller.validatePost(v),
@@ -63,20 +62,8 @@ class AddPostForm extends Container {
                     onPressed: () {
                       final FormState form = this._formKey.currentState;
                       if (form.validate()) {
+                        form.save();
                         this.controller.addPost();
-                      } else {
-                        showTopSnackBar(
-                            Get.overlayContext,
-                            CustomSnackBar.error(
-                              icon: Icon(
-                                Icons.error_outline,
-                                color: mainColor,
-                                size: 120.0,
-                              ),
-                              backgroundColor: Colors.transparent,
-                              iconRotationAngle: 32,
-                              message: min_caracteres,
-                            ));
                       }
                     },
                     child: Text(

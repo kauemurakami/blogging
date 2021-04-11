@@ -16,4 +16,5 @@ const profile = 'Perfil';
 const overflow_text = 'Seu post deve conter no máximo 380 caracteres.';
 const min_caracteres = 'Insira ao menos 7 caracteres no seu post!';
 const max_caracteres = 'Seu post não deve ultrapassar 180 caracteres!';
+const success_post = 'Sua publicação foi enviada!';
 const ID = 'fnweion-231940u23-fwfew';

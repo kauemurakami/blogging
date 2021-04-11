@@ -29,7 +29,16 @@ class AnswersListWidget extends Container {
                   flex: 2,
                   child: Padding(
                       padding: EdgeInsets.only(top: 16.0),
-                      child: Text(answers))),
+                      child: this
+                                  .controller
+                                  .state
+                                  .value
+                                  .result[this.index]
+                                  .value
+                                  .respostas <=
+                              0
+                          ? Text(not_answers)
+                          : Text(answers))),
               Expanded(
                 flex: 8,
                 child: Theme(

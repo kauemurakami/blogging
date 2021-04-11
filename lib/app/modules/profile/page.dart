@@ -38,12 +38,7 @@ class ProfilePage extends GetView {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage(this
-                            .controller
-                            .authService
-                            .user
-                            .value
-                            .autorImageUrl),
+                        image: AssetImage('assets/images/avatar.png'),
                         fit: BoxFit.cover)),
               ),
               Text(

@@ -13,27 +13,27 @@ class HeaderCardWidget extends Container {
         Expanded(
           flex: 1,
           child: Container(
-            height: 100.0,
-            width: 100.0,
+            height: 110.0,
+            width: 110.0,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: this
-                              .controller
-                              .state
-                              .value
-                              .result[this.index]
-                              .value
-                              .autorImageUrl ==
-                          null
-                      ? AssetImage('assets/images/avatar.png')
-                      : NetworkImage(this
-                          .controller
-                          .state
-                          .value
-                          .result[this.index]
-                          .value
-                          .autorImageUrl),
-                ),
+                    image: this
+                                .controller
+                                .state
+                                .value
+                                .result[this.index]
+                                .value
+                                .autorImageUrl ==
+                            null
+                        ? AssetImage('assets/images/avatar.png')
+                        : NetworkImage(this
+                            .controller
+                            .state
+                            .value
+                            .result[this.index]
+                            .value
+                            .autorImageUrl),
+                    fit: BoxFit.cover),
                 shape: BoxShape.circle),
           ),
         ),

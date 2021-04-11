@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/data/models/posts.dart';
 import 'package:teste_eprhom/app/data/services/app_config_service/service.dart';
 import 'package:teste_eprhom/app/data/services/auth_service/service.dart';
 import 'package:teste_eprhom/app/modules/home/repository.dart';
+import 'package:teste_eprhom/app/modules/home/widgets/add_post_succes_notify.dart';
 import 'package:teste_eprhom/app/modules/home/widgets/bottom_sheet_post.dart';
 import 'package:teste_eprhom/app/modules/home/widgets/minumun_caracteres.dart';
 import 'package:teste_eprhom/app/modules/posts/controller.dart';
-import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class HomeController extends GetxController {
@@ -28,13 +27,16 @@ class HomeController extends GetxController {
   }
 
   addPost() {
-    if (this.authService.user.value.texto == null) {
+    if (this.authService.user.value.texto == null ||
+        this.authService.user.value.texto.length < 7) {
       showTopSnackBar(Get.overlayContext, MinumunCaracteresPushWidget());
     } else {
       final PostsController pc = Get.find<PostsController>();
-      pc.state.value.result.add(this.authService.user);
-      pc.updatePosts();
+      pc.updatePosts(this.authService.user);
     }
+    showTopSnackBar(Get.overlayContext, AddPostNotifyWidget());
+
+    Get.back();
   }
 
   changePage(i) => this.index.value = i;
