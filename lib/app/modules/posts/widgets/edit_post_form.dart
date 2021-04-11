@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teste_eprhom/app/modules/home/controller.dart';
+import 'package:teste_eprhom/app/modules/posts/controller.dart';
 import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 
-class AddPostForm extends Container {
+class EditPostForm extends Container {
   final GlobalKey _formKey = GlobalKey<FormState>();
-  final controller = Get.find<HomeController>();
+  final controller = Get.find<PostsController>();
+  final index;
+  EditPostForm(this.index);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,11 +28,9 @@ class AddPostForm extends Container {
                     primaryColor: mainColor,
                     accentColor: mainColor,
                   ),
-                  child: TextFormField(
+                  child: TextField(
+                      controller: this.controller.txtController,
                       textInputAction: TextInputAction.done,
-                      onChanged: (v) => this.controller.onChangedPost(v),
-                      onSaved: (v) => this.controller.onSavedPost(v),
-                      validator: (v) => this.controller.validatePost(v),
                       keyboardType: TextInputType.multiline,
                       maxLines: 10,
                       cursorColor: Colors.white,
@@ -59,15 +59,9 @@ class AddPostForm extends Container {
                     borderSide: BorderSide(
                       color: Colors.white,
                     ),
-                    onPressed: () {
-                      final FormState form = this._formKey.currentState;
-                      if (form.validate()) {
-                        form.save();
-                        this.controller.addPost();
-                      }
-                    },
+                    onPressed: () => this.controller.editPost(this.index),
                     child: Text(
-                      publish,
+                      editar,
                       style: TextStyle(color: Colors.white),
                     )),
               )

@@ -5,7 +5,7 @@ import 'package:teste_eprhom/core/values/colors.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
-class MinumunCaracteresPushWidget extends GlassmorphicContainer {
+class EditPostNotifyWidget extends GlassmorphicContainer {
   @override
   Widget build(BuildContext context) {
     return GlassmorphicContainer(
@@ -32,16 +32,19 @@ class MinumunCaracteresPushWidget extends GlassmorphicContainer {
               0.1,
               1,
             ]),
-        border: 2,
-        child: CustomSnackBar.info(
-          icon: Icon(
-            Icons.sentiment_neutral,
-            color: mainColor,
-            size: 120.0,
+        border: 0,
+        child: CustomSnackBar.success(
+          icon: Padding(
+            padding: const EdgeInsets.only(left: 24.0),
+            child: Icon(
+              Icons.edit,
+              color: mainColor,
+              size: 80.0,
+            ),
           ),
           backgroundColor: Colors.transparent,
-          iconRotationAngle: 32,
-          message: min_caracteres,
+          iconRotationAngle: 0,
+          message: edited_post,
         ));
   }
 }

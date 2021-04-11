@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:teste_eprhom/app/modules/home/controller.dart';
-import 'package:teste_eprhom/app/modules/home/widgets/add_post_form.dart';
 import 'package:teste_eprhom/core/theme/text_theme.dart';
 import 'package:teste_eprhom/core/values/strings.dart';
+import '../widgets/add_post_form.dart';
 
 class BottomSheetAddPost extends Container {
   final controller = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -43,7 +44,7 @@ class BottomSheetAddPost extends Container {
                 padding: EdgeInsets.all(16.0),
                 child: Text(
                   create_publish,
-                  style: bs_post_style,
+                  style: create_publish_style,
                 ),
               ),
               AddPostForm()

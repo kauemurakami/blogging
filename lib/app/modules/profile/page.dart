@@ -45,17 +45,6 @@ class ProfilePage extends GetView {
                 this.controller.authService.user.value.autorNome,
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(flex: 2, child: Text('Publicações')),
-                  Expanded(flex: 1, child: Text('0')),
-                  Expanded(flex: 2, child: Text('Likes')),
-                  Expanded(flex: 1, child: Text('0')),
-                  Expanded(flex: 2, child: Text('Respostas')),
-                  Expanded(flex: 1, child: Text('0')),
-                ],
-              )
             ],
           ),
         ),

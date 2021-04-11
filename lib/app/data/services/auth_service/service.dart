@@ -14,7 +14,7 @@ class AuthService extends GetxService {
     liked: false,
     respostas: 0,
     id: ID,
-    estaLido: false,      
+    estaLido: false,
     autorNome: 'Kauê Tomaz Murakami',
     autorImageUrl: null,
   ).obs;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste_eprhom/app/modules/posts/controller.dart';
+import 'package:teste_eprhom/core/values/colors.dart';
+import 'package:teste_eprhom/core/values/strings.dart';
 
 class HeaderCardWidget extends Container {
   final controller = Get.find<PostsController>();
@@ -67,7 +69,32 @@ class HeaderCardWidget extends Container {
                       .dataHora)),
                 ),
               ],
-            ))
+            )),
+        this.controller.state.value.result[this.index].value.id == ID
+            ? Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      splashColor: mainColor,
+                      highlightColor: mainColor,
+                      icon: Icon(
+                        Icons.delete,
+                        color: heartColor,
+                      ),
+                      onPressed: () => this.controller.deletePost(this.index),
+                    ),
+                    IconButton(
+                      splashColor: mainColor,
+                      highlightColor: mainColor,
+                      icon: Icon(Icons.edit, color: Colors.greenAccent[700]),
+                      onPressed: () => this.controller.openEditPost(this.index),
+                    )
+                  ],
+                ),
+              )
+            : Container()
       ],
     );
   }

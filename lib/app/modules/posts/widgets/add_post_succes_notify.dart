@@ -32,7 +32,7 @@ class AddPostNotifyWidget extends GlassmorphicContainer {
               0.1,
               1,
             ]),
-        border: 2,
+        border: 0,
         child: CustomSnackBar.success(
           icon: Icon(
             Icons.sentiment_very_satisfied,
