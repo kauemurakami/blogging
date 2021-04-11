@@ -2,6 +2,9 @@
 
 ### Dependencies
 ```yaml
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
 dependencies:  
   
   flutter:  
@@ -32,12 +35,20 @@ dev_dependencies:
 - Membros  
 - Abrir as respostas expandindo o container  
 - Número de respostas  
+- Verifica se há conexão de internet para retornar um feedback visual
 - Lido/Não lido  
-- Temas Dark/Ligth
-- Bottom Navigation
-- Profile com infromações pessoais
-- Links com WebViews
-- Ligar ao clickar no telefone de contato
-- Exibindo apenas posts com, no máximo 280 caracteres, mais que isso fica ocultados.
-- Icone de exibição
+- Temas Dark/Ligth  
+- Bottom Navigation  
+- Profile com infromações pessoais  
+- Links com WebViews  
+- Ligar ao clickar no telefone de contato  
+- Exibindo apenas posts com, no máximo 280 caracteres, mais que isso fica ocultados.  
+- Icone de exibição  
+- Fonts Google  
+- Undraw Images  
 
+
+## Fast APK
+- [APK](https://github.com/kauemurakami/blogging/blob/main/apk_release.apk)
+
+## 
